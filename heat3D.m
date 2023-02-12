@@ -1,4 +1,4 @@
- clc; clear;
+clc; clear;
 % Matetial
 rho = 7800;
 c = 500;

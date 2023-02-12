@@ -4,35 +4,23 @@ clc;
 rho = 7800;
 c = 500;
 lambda = 46;
-
-% rho = input('Enter the density:');
-% c = input('Enter the heat capacity: ');
-% lambda = input('Enter the coefficient of thermal conductivity: ');   
-
 a = lambda / (rho * c);       % thermal diffusitivy
-
 % Parameters 
 A = 0.25;                     %  height
 B = 1.5;                      %  width
 t = 600;                      %  time
 
-% A = input('Enter the height: ');
-% B = input('Enter the width: ');
-% t = input('Enter the time: ');
-
 %  Bordering
 T0 = 20;
-% T0 = input('Enter the initial Temperature T0: ');
-hx = 0.01; 
+hx = 0.01;
 hy = 0.01;
 tau = 1 / (a * 12 * (1 / (hx * hx) + 1 / (hy * hy))) ;
-%hy = (A / B) * hx; 
+
 Nx = round(B / (hx));
 Ny = round(A / (hy));
 Nt = round(t / tau);
 
-condition = input('Write the knid of border conditions: ');
-
+condition = input('Please, Enter the knid of border conditions: ');
 
 tic
 for i = 1 : Nx
@@ -44,7 +32,7 @@ end
 %%%%%%%%%%  FIRST CONDITIONS 
 
 if(condition == 1)
-    
+
 Tl = 1300; 
 Tr = 1300;
 Tu = 1300;
@@ -53,7 +41,7 @@ Td = 1300;
 % Tl = input('Enter the LEFT temperature: ');
 % Tr = input('Enter the RIGHT temperature: ');
 % Tu = input('Enter the UP temperature: ');
-% Td = input('Enter the DOWN temperature: ');    
+% Td = input('Enter the DOWN temperature: ');
     
 for k = 1 : Nt - 1
     for i = 1 : Nx
@@ -130,7 +118,7 @@ qd = 1300;
 % ql = input('Enter the LEFT heat flow: ');
 % qr = input('Enter the RIGHT flow: ');
 % qu = input('Enter the UP flow: ');
-% qd = input('Enter the DOWN flow: ');    
+% qd = input('Enter the DOWN flow: ');
     
   for k = 1 : Nt - 1
     for i = 1 : Nx
@@ -198,9 +186,8 @@ toc
     
 
 %%%%%%%%%%  THIRD CONDITIONS 
-                                        
-                                        
-    else if(condition == 3)
+
+else if(condition == 3)
             
 Tl = 1300; 
 Tr = 1300;
@@ -288,8 +275,7 @@ end
 toc
 
 else
-disp('Wrong condition !')    
-
+disp('Wrong condition !')
         end
     end
 end
